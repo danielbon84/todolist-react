@@ -6,25 +6,26 @@ const ToDoList = () => {
 	const [task, setTask] = useState("");
 	const [taskList, setTaskList] = useState([]);
 
-	const handleChange = (e) => {
-		setTask(e.target.value);
-	};
+	//const handleChange = (e) => {
+	//	setTask(e.target.value);
+	//};
 
-	const AddTask = () => {
-		if (task !== "") {
+	const AddTask = (e) => {
+		if (e.task !== "") {
 			const taskDetails = {
-				id: Math.floor(Math.random() * 1000),
+				
 				value: task,
 				isCompleted: false,
 			};
 
 			setTaskList([...taskList, taskDetails]);
-			
+			setTask("")
 		};
 	};
-	const deleteTask = (e, id) => {
-		e.preventDefault();
-		setTaskList(taskList.filter((t) => t.id != id));
+	const deleteTask = (indexToDelete) => {
+		
+		setTaskList(taskList.filter((task,index) => index != indexToDelete));
+		
 	}
 
 	return (<>
@@ -41,7 +42,8 @@ const ToDoList = () => {
 				name="text"
 				id="text"
 				placeholder="Add task here..."
-				onChange={(e) => handleChange(e)}
+				onChange={(e) => setTask(e.target.value)}
+				value={task}
 			/>
 
 			<button onClick={AddTask} className="btn">Añadir tareas</button>
@@ -49,10 +51,10 @@ const ToDoList = () => {
 			</div>
 			{taskList !== [] ? (
 				<ul className="glow">
-					{taskList.map((t) => (
-						<li>
+					{taskList.map((t,index) => (
+						<li key={index} >
 							{t.value}
-							<button className="delete" onClick={(e) => deleteTask(e, t.id)}>
+							<button className="delete" onClick={() => deleteTask(index)}>
 								X
 							</button>
 						</li>

@@ -15,7 +15,7 @@
 }
 
   body {
-    background-image: url("https://coachingparatodos.com/coachingparatodos/wp-content/uploads/2019/04/fastidio.jpg");
+    background-image: url("https://davidnez.files.wordpress.com/2013/04/agobio.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -39,7 +39,7 @@ ul {
 
 .delete {
   opacity: 50%;
-  color: white;
+  color: blue;
 }
 
 .delete:hover {
@@ -74,11 +74,11 @@ li button {
 }
 
 .input-field:focus, .input-field:enabled {
-    color: darkviolet;
+    color: red;
     }
 
 ::placeholder {
-    color: white;
+    color: blue;
 }
 
 
